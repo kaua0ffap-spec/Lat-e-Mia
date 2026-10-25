@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Late e Mia | Clínica Veterinária em Várzea Paulista</title>
+  <meta name="description" content="Late e Mia — Clínica veterinária humanizada em Várzea Paulista. Consultas, vacinas, exames, cirurgias e urgência para cães e gatos de Várzea Paulista, Jundiaí e região. Agende pelo WhatsApp." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23E85D04'/%3E%3Cellipse cx='18' cy='22' rx='5' ry='6.4' fill='%23FDFBF7' transform='rotate(-16 18 22)'/%3E%3Cellipse cx='31' cy='16' rx='5' ry='6.4' fill='%23FDFBF7'/%3E%3Cellipse cx='44' cy='18.5' rx='5' ry='6.4' fill='%23FDFBF7' transform='rotate(12 44 18.5)'/%3E%3Cellipse cx='52' cy='30' rx='4.2' ry='5.6' fill='%23FDFBF7' transform='rotate(30 52 30)'/%3E%3Cpath d='M32 52c-8-5.7-13.4-9.6-13.4-15.2 0-3.9 3-6.8 6.8-6.8 2.8 0 5.2 1.7 6.6 4.3 1.4-2.6 3.8-4.3 6.6-4.3 3.8 0 6.8 2.9 6.8 6.8C45.4 42.4 40 46.3 32 52z' fill='%23FDFBF7'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Outfit', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              orange: '#E85D04', orangeDark: '#D04D00',
+              teal: '#2A9D8F', tealDark: '#228176',
+              yellow: '#F4A261', bone: '#FDFBF7', cream: '#F7F1E8',
+              borderWarm: '#EFE6DA', ink: '#1E292B', muted: '#5C6769',
+              whats: '#25D366', whatsDark: '#20BA5A',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FDFBF7; color: #1E292B; }
+    ::selection { background: #E85D04; color: #fff; }
+
+    @keyframes lineUp { from { transform: translateY(110%); } to { transform: translateY(0); } }
+    .line-mask { display: block; overflow: hidden; padding-bottom: 0.15em; }
+    .line-mask > span { display: block; transform: translateY(110%); animation: lineUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .line-mask:nth-child(1) > span { animation-delay: 0.15s; }
+    .line-mask:nth-child(2) > span { animation-delay: 0.29s; }
+    .line-mask:nth-child(3) > span { animation-delay: 0.43s; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .delay-65 { animation-delay: 0.65s; } .delay-80 { animation-delay: 0.8s; } .delay-95 { animation-delay: 0.95s; } .delay-105 { animation-delay: 1.05s; } .delay-120 { animation-delay: 1.2s; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .animate-marquee { animation: marquee 48s linear infinite; }
+    .marquee-mask { -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent); mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent); }
+
+    @keyframes floatSoft { 0%,100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+    .float-soft { animation: floatSoft 6s ease-in-out infinite; }
+
+    .pill { border-radius: 9999px; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 700; transition: all 0.3s; background: #fff; color: #5C6769; box-shadow: inset 0 0 0 1px #EFE6DA; }
+    .pill:hover { transform: translateY(-2px); color: #1E292B; box-shadow: inset 0 0 0 1px rgba(232,93,4,0.5); }
+    .pill.active { background: #1E292B; color: #FDFBF7; box-shadow: 0 8px 20px rgba(30,41,43,0.3); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- SVG symbol: marca da patinha com coração -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo-mark" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="16" fill="#E85D04"/>
+      <ellipse cx="18" cy="22" rx="5" ry="6.4" fill="#FDFBF7" transform="rotate(-16 18 22)"/>
+      <ellipse cx="31" cy="16" rx="5" ry="6.4" fill="#FDFBF7"/>
+      <ellipse cx="44" cy="18.5" rx="5" ry="6.4" fill="#FDFBF7" transform="rotate(12 44 18.5)"/>
+      <ellipse cx="52" cy="30" rx="4.2" ry="5.6" fill="#FDFBF7" transform="rotate(30 52 30)"/>
+      <path d="M32 52c-8-5.7-13.4-9.6-13.4-15.2 0-3.9 3-6.8 6.8-6.8 2.8 0 5.2 1.7 6.6 4.3 1.4-2.6 3.8-4.3 6.6-4.3 3.8 0 6.8 2.9 6.8 6.8C45.4 42.4 40 46.3 32 52z" fill="#FDFBF7"/>
+    </symbol>
+  </svg>
+
+  <!-- HEADER -->
+  <header data-testid="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-brand-borderWarm bg-brand-bone/85 shadow-[0_8px_30px_rgba(30,41,43,0.06)] backdrop-blur-xl">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
+      <a href="#inicio" data-testid="nav-brand-logo" class="flex items-center gap-3">
+        <svg class="h-11 w-11"><use href="#logo-mark"/></svg>
+        <span class="leading-tight">
+          <span class="block font-display text-lg font-bold tracking-tight">Late e Mia</span>
+          <span class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-orange">Clínica Veterinária</span>
+        </span>
+      </a>
+      <nav class="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
+        <a data-testid="nav-link-inicio" href="#inicio" class="text-sm font-semibold text-brand-muted hover:text-brand-ink transition-colors">Início</a>
+        <a data-testid="nav-link-sobre" href="#sobre" class="text-sm font-semibold text-brand-muted hover:text-brand-ink transition-colors">Sobre Nós</a>
+        <a data-testid="nav-link-servicos" href="#servicos" class="text-sm font-semibold text-brand-muted hover:text-brand-ink transition-colors">Serviços</a>
+        <a data-testid="nav-link-agendar" href="#agendar" class="text-sm font-semibold text-brand-muted hover:text-brand-ink transition-colors">Agendamento</a>
+        <a data-testid="nav-link-localizacao" href="#localizacao" class="text-sm font-semibold text-brand-muted hover:text-brand-ink transition-colors">Localização</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a data-testid="nav-whatsapp-cta-button" href="#" data-wa class="hidden sm:inline-flex items-center gap-2.5 rounded-full bg-brand-whats px-5 py-2.5 text-sm font-bold text-white shadow-[0_10px_24px_rgba(37,211,102,0.35)] transition-all hover:-translate-y-0.5 hover:bg-brand-whatsDark" target="_blank" rel="noopener noreferrer">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
+          </span>
+          Agendar Consulta
+        </a>
+        <button data-testid="nav-mobile-menu-button" id="menu-btn" class="grid h-11 w-11 place-items-center rounded-full border border-brand-borderWarm bg-white lg:hidden" aria-label="Abrir menu">
+          <svg id="menu-icon-open" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="menu-icon-close" class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden overflow-hidden border-t border-brand-borderWarm bg-brand-bone/95 backdrop-blur-xl lg:hidden" aria-label="Menu móvel">
+      <div class="space-y-1 px-5 py-5">
+        <a data-testid="mobile-nav-link-inicio" href="#inicio" class="mobile-link block rounded-2xl px-4 py-3 font-display text-lg font-semibold hover:bg-brand-cream">Início</a>
+        <a data-testid="mobile-nav-link-sobre" href="#sobre" class="mobile-link block rounded-2xl px-4 py-3 font-display text-lg font-semibold hover:bg-brand-cream">Sobre Nós</a>
+        <a data-testid="mobile-nav-link-servicos" href="#servicos" class="mobile-link block rounded-2xl px-4 py-3 font-display text-lg font-semibold hover:bg-brand-cream">Serviços</a>
+        <a data-testid="mobile-nav-link-agendar" href="#agendar" class="mobile-link block rounded-2xl px-4 py-3 font-display text-lg font-semibold hover:bg-brand-cream">Agendamento</a>
+        <a data-testid="mobile-nav-link-localizacao" href="#localizacao" class="mobile-link block rounded-2xl px-4 py-3 font-display text-lg font-semibold hover:bg-brand-cream">Localização</a>
+        <a data-testid="mobile-nav-whatsapp-cta-button" href="#" data-wa target="_blank" rel="noopener noreferrer" class="mt-3 flex items-center justify-center gap-2 rounded-full bg-brand-whats px-5 py-3.5 text-sm font-bold text-white">Agendar Consulta pelo WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" data-testid="hero-section" class="relative overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-44">
+      <div class="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-brand-yellow/25 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-32 top-1/2 h-[380px] w-[380px] rounded-full bg-brand-teal/15 blur-3xl" aria-hidden="true"></div>
+
+      <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-7">
+          <div class="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-brand-borderWarm bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-brand-orange shadow-sm">
+            <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.9-9.7-9.2C.7 8.6 2.6 5 6.1 5c2 0 3.6 1.1 4.4 2.7h3c.8-1.6 2.4-2.7 4.4-2.7 3.5 0 5.4 3.6 3.8 6.8C19.5 16.1 12 21 12 21z" opacity="0"/><circle cx="7.5" cy="9.5" r="2"/><circle cx="12" cy="7" r="2"/><circle cx="16.5" cy="9.5" r="2"/><path d="M12 11c-3 0-5.5 2.6-5.5 5.2 0 1.9 1.4 3.3 3.2 3.3 1 0 1.7-.4 2.3-.4s1.3.4 2.3.4c1.8 0 3.2-1.4 3.2-3.3C17.5 13.6 15 11 12 11z"/></svg>
+            Várzea Paulista · Jundiaí · Região
+          </div>
+
+          <h1 data-testid="hero-title" class="font-display text-4xl font-bold leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl">
+            <span class="line-mask"><span>Seu pet acolhido</span></span>
+            <span class="line-mask"><span>com o <span class="text-brand-orange">carinho</span> de quem ama</span></span>
+            <span class="line-mask"><span>e a <span class="text-brand-teal">precisão</span> de quem cuida.</span></span>
+          </h1>
+
+          <p class="fade-up delay-65 mt-6 max-w-xl text-base leading-relaxed text-brand-muted sm:text-lg">
+            Atendimento veterinário completo e humanizado em Várzea Paulista, a poucos minutos de Jundiaí. Consultas, vacinas, exames e cirurgias — tudo com o cuidado que o seu melhor amigo merece.
+          </p>
+
+          <div class="fade-up delay-80 mt-9 flex flex-wrap items-center gap-4">
+            <a data-testid="hero-whatsapp-cta-button" href="#" data-wa target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-full bg-brand-whats px-7 py-4 font-display text-base font-bold text-white shadow-[0_16px_36px_rgba(37,211,102,0.4)] transition-all hover:-translate-y-1 hover:bg-brand-whatsDark">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.7.3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .8-.4 1.5z"/></svg>
+              Agendar pelo WhatsApp
+            </a>
+            <a data-testid="hero-phone-call-button" href="tel:+5511950003724" class="inline-flex items-center gap-2.5 rounded-full border-2 border-brand-ink/10 bg-white px-6 py-[14px] font-display text-base font-bold transition-all hover:-translate-y-1 hover:border-brand-orange">
+              <svg class="h-4 w-4 text-brand-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2l2 5-2.5 1.5a11 11 0 0 0 6 6L14 13l5 2v2a2 2 0 0 1-2 2A16 16 0 0 1 3 5z"/></svg>
+              (11) 95000-3724
+            </a>
+          </div>
+
+          <div class="fade-up delay-95 mt-10 flex flex-wrap gap-3">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold shadow ring-1 ring-brand-borderWarm">🧡 Atendimento humanizado</span>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold shadow ring-1 ring-brand-borderWarm">🛡️ Anestesia inalatória segura</span>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold shadow ring-1 ring-brand-borderWarm">🐾 Cães e gatos bem-vindos</span>
+          </div>
+        </div>
+
+        <div class="relative lg:col-span-5">
+          <div class="float-soft relative">
+            <div class="overflow-hidden rounded-[2.5rem] border-8 border-white shadow-[0_32px_80px_rgba(30,41,43,0.18)]">
+              <img data-testid="hero-image" src="https://images.unsplash.com/photo-1700665537650-1bf37979aae0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHx2ZXRlcmluYXJpYW4lMjBzbWlsaW5nJTIwZG9nJTIwY2FyZXxlbnwwfHx8fDE3OTI5MzM3NjF8MA&ixlib=rb-4.1.0&q=85" alt="Veterinária da Late e Mia acolhendo um cão com carinho" class="aspect-[4/5] w-full object-cover" loading="eager" />
+            </div>
+            <div class="fade-up delay-105 absolute -left-4 top-8 flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 shadow-[0_14px_36px_rgba(30,41,43,0.16)] sm:-left-8">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-whats opacity-75"></span>
+                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-whats"></span>
+              </span>
+              <span class="text-sm font-bold">Atendendo agora</span>
+            </div>
+            <a data-testid="hero-urgency-chip" href="#" data-wa-urgency target="_blank" rel="noopener noreferrer" class="fade-up delay-120 absolute -bottom-5 left-1/2 flex w-max -translate-x-1/2 items-center gap-2.5 rounded-full bg-brand-ink px-5 py-3 text-sm font-bold text-brand-bone shadow-[0_18px_40px_rgba(30,41,43,0.35)] transition-transform hover:-translate-y-1">
+              🚨 Urgência? Chame no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section data-testid="services-marquee" aria-hidden="true" class="relative z-10 -mx-2 -rotate-1 border-y-4 border-brand-ink bg-brand-ink py-5">
+      <div class="marquee-mask overflow-hidden">
+        <div class="animate-marquee flex w-max">
+          <div class="flex shrink-0 items-center marquee-content"></div>
+          <div class="flex shrink-0 items-center marquee-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" data-testid="about-section" class="relative overflow-hidden py-24 lg:py-32">
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">
+        <div class="relative order-2 lg:order-1 reveal">
+          <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-7 overflow-hidden rounded-[2rem] border-[6px] border-white shadow-[0_24px_60px_rgba(30,41,43,0.14)]">
+              <img data-testid="about-image-main" src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRvZyUyMGNhdCUyMHBldCUyMGNhcmUlMjBwb3J0cmFpdHxlbnwwfHx8fDE3OTI5MzM3NTl8MA&ixlib=rb-4.1.0&q=85" alt="Tutor abraçando cão e gato com carinho" class="aspect-[3/4] h-full w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
+            </div>
+            <div class="col-span-5 flex flex-col gap-4 pt-10">
+              <div class="overflow-hidden rounded-[1.5rem] border-[6px] border-white shadow-[0_18px_44px_rgba(30,41,43,0.12)]">
+                <img data-testid="about-image-kitten" src="https://images.unsplash.com/photo-1725409796872-8b41e8eca929?crop=entropy&cs=srgb&fm=jpg&ixid=M3w8NjA1MDV8MHwxfHNlYXJjaHwzfHx2ZXRlcmluYXJpYW4lMjBkb2clMjBjYXQlMjBjbGluaWMlMjBjYXJlfGVufDB8fHx8MTc5MjkzMzc1Nnww&ixlib=rb-4.1.0&q=85" alt="Veterinário examinando gatinho" class="aspect-square w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
+              </div>
+              <div class="overflow-hidden rounded-[1.5rem] border-[6px] border-white shadow-[0_18px_44px_rgba(30,41,43,0.12)]">
+                <img data-testid="about-image-cat" src="https://images.unsplash.com/photo-1733783489145-f3d3ee7a9ccf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w8NjA1MDV8MHwxfHNlYXJjaHwyfHx2ZXRlcmluYXJpYW4lMjBkb2clMjBjYXQlMjBjbGluaWMlMjBjYXJlfGVufDB8fHx8MTc5MjkzMzc1Nnww&ixlib=rb-4.1.0&q=85" alt="Gato sendo examinado na clínica" class="aspect-square w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 left-6 rounded-2xl bg-brand-teal px-6 py-4 text-white shadow-[0_18px_40px_rgba(42,157,143,0.4)]">
+            <p class="font-display text-lg font-bold leading-tight">Feita de gente</p>
+            <p class="font-display text-lg font-bold leading-tight text-brand-yellow">que ama bicho.</p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <div class="reveal">
+            <p class="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange"><span class="h-1.5 w-1.5 rounded-full bg-brand-orange"></span>Sobre Nós</p>
+            <h2 class="font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl lg:text-4xl">Uma clínica onde o seu pet é tratado como parte da família. Porque é.</h2>
+            <p class="mt-6 text-base leading-relaxed text-brand-muted sm:text-lg">A <strong class="text-brand-ink">Late e Mia</strong> nasceu do amor pelos animais e da vontade de oferecer a Várzea Paulista, Jundiaí e região um atendimento veterinário que une ciência e afeto. Aqui, cada consulta começa com escuta: entendemos a rotina, os hábitos e a personalidade do seu pet antes de qualquer conduta.</p>
+            <p class="mt-4 text-base leading-relaxed text-brand-muted sm:text-lg">Do check-up de rotina aos momentos de urgência, nossa missão é que você saia da clínica com a certeza de que seu melhor amigo recebeu o melhor cuidado possível.</p>
+          </div>
+
+          <div class="mt-10 space-y-5">
+            <div class="reveal flex gap-4 rounded-2xl border border-brand-borderWarm bg-white p-5 shadow-[0_6px_20px_rgba(30,41,43,0.05)] transition-all hover:-translate-y-1" data-testid="about-differential-1">
+              <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-orange/10 text-xl">🧡</div>
+              <div>
+                <h3 class="font-display text-base font-bold">Equipe apaixonada por animais</h3>
+                <p class="mt-1 text-sm leading-relaxed text-brand-muted">Cada pet é recebido pelo nome, com paciência, respeito ao tempo dele e zero pressa no consultório.</p>
+              </div>
+            </div>
+            <div class="reveal flex gap-4 rounded-2xl border border-brand-borderWarm bg-white p-5 shadow-[0_6px_20px_rgba(30,41,43,0.05)] transition-all hover:-translate-y-1" data-testid="about-differential-2">
+              <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-orange/10 text-xl">🩺</div>
+              <div>
+                <h3 class="font-display text-base font-bold">Estrutura moderna e completa</h3>
+                <p class="mt-1 text-sm leading-relaxed text-brand-muted">Equipamentos de diagnóstico por imagem e centro cirúrgico com monitorização contínua.</p>
+              </div>
+            </div>
+            <div class="reveal flex gap-4 rounded-2xl border border-brand-borderWarm bg-white p-5 shadow-[0_6px_20px_rgba(30,41,43,0.05)] transition-all hover:-translate-y-1" data-testid="about-differential-3">
+              <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-orange/10 text-xl">✨</div>
+              <div>
+                <h3 class="font-display text-base font-bold">Ambiente livre de estresse</h3>
+                <p class="mt-1 text-sm leading-relaxed text-brand-muted">Espaço limpo, acolhedor e pensado para reduzir a ansiedade de cães e gatos (e dos tutores também).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" data-testid="services-section" class="bg-brand-cream py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange"><span class="h-1.5 w-1.5 rounded-full bg-brand-orange"></span>Nossos Serviços</p>
+          <h2 class="font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl lg:text-4xl">Tudo o que o seu pet precisa, em um só lugar.</h2>
+          <p class="mt-4 text-base leading-relaxed text-brand-muted sm:text-lg">Da prevenção à emergência, cuidamos de cada etapa da vida do seu companheiro com técnica, transparência e muito carinho.</p>
+        </div>
+
+        <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-6" id="services-grid">
+          <!-- Cards gerados via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDAMENTO RÁPIDO -->
+    <section id="agendar" data-testid="quick-booking-section" class="relative overflow-hidden py-24 lg:py-32">
+      <div class="relative mx-auto max-w-4xl px-5 sm:px-8">
+        <div class="reveal overflow-hidden rounded-[2.25rem] bg-white shadow-[0_32px_80px_rgba(30,41,43,0.14)] ring-1 ring-brand-borderWarm">
+          <div class="flex items-center gap-3 bg-brand-orange px-7 py-5 sm:px-10">
+            <span class="text-2xl">🐾</span>
+            <h2 class="font-display text-xl font-bold text-white sm:text-2xl">Agende em 3 toques</h2>
+          </div>
+          <div class="space-y-8 px-7 py-9 sm:px-10 sm:py-11">
+            <p class="text-sm leading-relaxed text-brand-muted sm:text-base">Monte seu agendamento aqui e finalize no WhatsApp com a mensagem já pronta. Simples assim.</p>
+            <div>
+              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em]">Quem é o paciente?</p>
+              <div class="flex flex-wrap gap-2.5" id="pet-group"></div>
+            </div>
+            <div>
+              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em]">O que você precisa?</p>
+              <div class="flex flex-wrap gap-2.5" id="service-group"></div>
+            </div>
+            <div>
+              <p class="mb-3 text-xs font-bold uppercase tracking-[0.16em]">Melhor período</p>
+              <div class="flex flex-wrap gap-2.5" id="period-group"></div>
+            </div>
+            <div data-testid="quick-booking-preview" id="booking-preview" class="rounded-2xl border border-dashed border-brand-orange/40 bg-brand-orange/5 p-5 text-sm italic leading-relaxed text-brand-muted"></div>
+            <a data-testid="quick-booking-whatsapp-submit" id="booking-submit" href="#" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-3 rounded-full bg-brand-whats px-8 py-4 font-display text-base font-bold text-white shadow-[0_16px_36px_rgba(37,211,102,0.4)] transition-all hover:-translate-y-1 hover:bg-brand-whatsDark sm:text-lg">
+              Enviar e agendar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO -->
+    <section id="localizacao" data-testid="location-section" class="bg-brand-cream py-24 lg:py-32">
+      <div class="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-10">
+        <div>
+          <div class="reveal">
+            <p class="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange"><span class="h-1.5 w-1.5 rounded-full bg-brand-orange"></span>Localização e Contato</p>
+            <h2 class="font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl lg:text-4xl">Perto de você, em Várzea Paulista — a poucos minutos de Jundiaí.</h2>
+            <p class="mt-4 text-base leading-relaxed text-brand-muted sm:text-lg">Estamos em um ponto de fácil acesso para quem vem de Jundiaí, Campo Limpo Paulista e dos bairros vizinhos. Estacionar por aqui é tranquilo.</p>
+          </div>
+
+          <div class="mt-9 space-y-4">
+            <div class="reveal rounded-2xl border border-brand-borderWarm bg-white p-6 shadow-[0_6px_20px_rgba(30,41,43,0.05)]" data-testid="location-address-card">
+              <div class="flex items-start gap-4">
+                <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-orange/10 text-xl">📍</div>
+                <div class="flex-1">
+                  <h3 class="font-display text-base font-bold">Endereço</h3>
+                  <p class="mt-1 text-sm leading-relaxed text-brand-muted">R. Marabá, 383 - Jardim America I, Várzea Paulista - SP, 13221-330</p>
+                  <button data-testid="location-copy-address-button" id="copy-address" class="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-cream px-4 py-2 text-xs font-bold transition-colors hover:bg-brand-orange hover:text-white">📋 <span id="copy-label">Copiar endereço</span></button>
+                </div>
+              </div>
+            </div>
+            <div class="reveal rounded-2xl border border-brand-borderWarm bg-white p-6 shadow-[0_6px_20px_rgba(30,41,43,0.05)]" data-testid="location-phone-card">
+              <div class="flex items-start gap-4">
+                <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-whats/10 text-xl">📞</div>
+                <div>
+                  <h3 class="font-display text-base font-bold">Telefone & WhatsApp</h3>
+                  <a data-testid="location-phone-link" href="tel:+5511950003724" class="mt-1 block text-sm font-semibold text-brand-muted hover:text-brand-orange transition-colors">(11) 95000-3724</a>
+                  <a data-testid="location-whatsapp-link" href="#" data-wa target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-brand-whats hover:text-brand-whatsDark">Chamar no WhatsApp</a>
+                </div>
+              </div>
+            </div>
+            <div class="reveal rounded-2xl border border-brand-borderWarm bg-white p-6 shadow-[0_6px_20px_rgba(30,41,43,0.05)]" data-testid="location-hours-card">
+              <div class="flex items-start gap-4">
+                <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-teal/10 text-xl">🕐</div>
+                <div class="flex-1">
+                  <h3 class="font-display text-base font-bold">Horário de atendimento</h3>
+                  <ul class="mt-2 space-y-1.5">
+                    <li class="flex items-center justify-between gap-4 text-sm"><span class="font-semibold">Segunda a sexta</span><span class="text-brand-muted">08h às 19h</span></li>
+                    <li class="flex items-center justify-between gap-4 text-sm"><span class="font-semibold">Sábado</span><span class="text-brand-muted">08h às 13h</span></li>
+                    <li class="flex items-center justify-between gap-4 text-sm"><span class="font-semibold">Domingo</span><span class="text-brand-muted">Fechado — urgências pelo WhatsApp</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col">
+          <div class="relative flex-1 overflow-hidden rounded-[2rem] border-[6px] border-white shadow-[0_24px_60px_rgba(30,41,43,0.14)]">
+            <iframe data-testid="location-map-embed" title="Mapa da Clínica Late e Mia em Várzea Paulista" src="https://www.google.com/maps?q=R.%20Marab%C3%A1%2C%20383%20-%20Jardim%20America%20I%2C%20V%C3%A1rzea%20Paulista%20-%20SP%2C%2013221-330&output=embed" class="h-full min-h-[380px] w-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a data-testid="location-open-google-maps-button" href="https://www.google.com/maps/search/?api=1&query=R.+Marab%C3%A1%2C+383+-+Jardim+America+I%2C+V%C3%A1rzea+Paulista+-+SP" target="_blank" rel="noopener noreferrer" class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand-ink px-6 py-3.5 text-sm font-bold text-brand-bone transition-all hover:-translate-y-0.5 hover:bg-brand-orange sm:flex-none">📍 Abrir no Google Maps</a>
+            <a data-testid="location-open-waze-button" href="https://waze.com/ul?q=R.%20Marab%C3%A1%20383%20V%C3%A1rzea%20Paulista&navigate=yes" target="_blank" rel="noopener noreferrer" class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-brand-ink/10 bg-white px-6 py-3 text-sm font-bold transition-all hover:-translate-y-0.5 hover:border-brand-teal sm:flex-none">🧭 Abrir no Waze</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer data-testid="site-footer" class="relative overflow-hidden bg-brand-ink pb-10 pt-16 text-brand-bone">
+    <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid gap-12 md:grid-cols-3">
+        <div>
+          <div class="flex items-center gap-3">
+            <svg class="h-11 w-11"><use href="#logo-mark"/></svg>
+            <span class="leading-tight">
+              <span class="block font-display text-lg font-bold">Late e Mia</span>
+              <span class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-yellow">Clínica Veterinária</span>
+            </span>
+          </div>
+          <p class="mt-5 max-w-xs text-sm leading-relaxed text-brand-bone/70">Cuidado veterinário humanizado para cães e gatos de Várzea Paulista, Jundiaí e região. Aqui, seu pet é família.</p>
+          <div class="mt-6 flex gap-3">
+            <a data-testid="footer-social-instagram" href="#" aria-label="Instagram da Late e Mia" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 transition-all hover:-translate-y-1 hover:bg-brand-orange">📸</a>
+            <a data-testid="footer-social-facebook" href="#" aria-label="Facebook da Late e Mia" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 transition-all hover:-translate-y-1 hover:bg-brand-orange">👍</a>
+            <a data-testid="footer-social-whatsapp" href="#" data-wa target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Late e Mia" class="grid h-11 w-11 place-items-center rounded-full bg-white/10 transition-all hover:-translate-y-1 hover:bg-brand-orange">💬</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-[0.18em] text-brand-yellow">Links rápidos</h3>
+          <ul class="mt-5 space-y-2.5">
+            <li><a data-testid="footer-link-inicio" href="#inicio" class="text-sm text-brand-bone/70 hover:text-brand-bone transition-colors">Início</a></li>
+            <li><a data-testid="footer-link-sobre" href="#sobre" class="text-sm text-brand-bone/70 hover:text-brand-bone transition-colors">Sobre Nós</a></li>
+            <li><a data-testid="footer-link-servicos" href="#servicos" class="text-sm text-brand-bone/70 hover:text-brand-bone transition-colors">Serviços</a></li>
+            <li><a data-testid="footer-link-agendar" href="#agendar" class="text-sm text-brand-bone/70 hover:text-brand-bone transition-colors">Agendamento</a></li>
+            <li><a data-testid="footer-link-localizacao" href="#localizacao" class="text-sm text-brand-bone/70 hover:text-brand-bone transition-colors">Localização</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-[0.18em] text-brand-yellow">Onde estamos</h3>
+          <p class="mt-5 text-sm leading-relaxed text-brand-bone/70">R. Marabá, 383 — Várzea Paulista/SP</p>
+          <a data-testid="footer-phone-link" href="tel:+5511950003724" class="mt-2 block text-sm font-semibold text-brand-bone/70 hover:text-brand-bone transition-colors">(11) 95000-3724</a>
+          <a data-testid="footer-whatsapp-cta" href="#" data-wa target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-whats px-5 py-2.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-whatsDark">💬 Agendar Consulta</a>
+        </div>
+      </div>
+      <div class="mt-14 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-7 sm:flex-row">
+        <p data-testid="footer-copyright" class="text-xs text-brand-bone/50">© <span id="year"></span> Clínica Veterinária Late e Mia. Todos os direitos reservados.</p>
+        <p class="text-xs text-brand-bone/50">Feito com carinho para quem late e para quem mia 🐾</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <a data-testid="floating-whatsapp-button" href="#" data-wa target="_blank" rel="noopener noreferrer" aria-label="Agendar consulta pelo WhatsApp" class="fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-brand-whats text-white shadow-[0_16px_40px_rgba(37,211,102,0.5)] transition-all hover:-translate-y-1 hover:bg-brand-whatsDark">
+    <span class="absolute inset-0 animate-ping rounded-full bg-brand-whats opacity-25"></span>
+    <svg class="relative h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.7.3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .8-.4 1.5z"/></svg>
+  </a>
+
+  <script>
+    const WA = '5511950003724';
+    const DEFAULT_MSG = 'Olá! Vim pelo site da Late e Mia e gostaria de agendar uma consulta para o meu pet.';
+    const URGENCY_MSG = 'Olá! Preciso de atendimento de URGÊNCIA para o meu pet. Podem me ajudar?';
+    const waLink = (msg) => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+
+    document.querySelectorAll('[data-wa]').forEach((a) => (a.href = waLink(DEFAULT_MSG)));
+    document.querySelectorAll('[data-wa-urgency]').forEach((a) => (a.href = waLink(URGENCY_MSG)));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden');
+      document.getElementById('menu-icon-open').classList.toggle('hidden', !open);
+      document.getElementById('menu-icon-close').classList.toggle('hidden', open);
+    });
+    document.querySelectorAll('.mobile-link').forEach((l) =>
+      l.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.getElementById('menu-icon-open').classList.remove('hidden');
+        document.getElementById('menu-icon-close').classList.add('hidden');
+      })
+    );
+
+    // Marquee
+    const MARQUEE_ITEMS = ['Consultas Gerais', 'Vacinação e Prevenção', 'Exames Laboratoriais', 'Cirurgias com Anestesia Inalatória', 'Urgência Veterinária', 'Várzea Paulista & Jundiaí'];
+    document.querySelectorAll('.marquee-content').forEach((row) => {
+      row.innerHTML = MARQUEE_ITEMS.map(
+        (item) =>
+          `<span class="flex items-center"><span class="whitespace-nowrap px-8 font-display text-lg font-bold uppercase tracking-[0.14em] text-brand-bone sm:text-xl">${item}</span><span class="text-brand-yellow text-xl">🐾</span></span>`
+      ).join('');
+    });
+
+    // Serviços
+    const SERVICES = [
+      { id: 'consultas', icon: '🩺', title: 'Consultas Gerais & Especializadas', desc: 'Avaliação clínica completa e sem pressa, com atenção especial à dermatologia, cardiologia e geriatria pet.', msg: 'Olá! Vim pelo site da Late e Mia e gostaria de agendar uma consulta para o meu pet.', span: 'lg:col-span-3', accent: 'bg-brand-orange/10' },
+      { id: 'vacinas', icon: '💉', title: 'Vacinação & Imunização', desc: 'Protocolos personalizados e vacinas de alta eficácia para manter cães e gatos protegidos o ano inteiro.', msg: 'Olá! Vim pelo site da Late e Mia e gostaria de agendar a vacinação do meu pet.', span: 'lg:col-span-3', accent: 'bg-brand-teal/10' },
+      { id: 'exames', icon: '🔬', title: 'Exames Laboratoriais & Imagem', desc: 'Ultrassonografia, raio-X digital e exames de sangue com agilidade e precisão no diagnóstico.', msg: 'Olá! Vim pelo site da Late e Mia e gostaria de agendar um exame para o meu pet.', span: 'lg:col-span-2', accent: 'bg-brand-yellow/20' },
+      { id: 'cirurgias', icon: '❤️‍🩹', title: 'Cirurgias & Anestesia Inalatória', desc: 'Centro cirúrgico com anestesia inalatória e monitorização contínua, do início à recuperação.', msg: 'Olá! Vim pelo site da Late e Mia e gostaria de agendar uma avaliação cirúrgica para o meu pet.', span: 'lg:col-span-2', accent: 'bg-brand-orange/10' },
+      { id: 'urgencia', icon: '🚨', title: 'Urgência & Pronto Atendimento', desc: 'Suporte rápido e dedicado nos momentos delicados. Chegou, chamou: a gente acolhe.', msg: URGENCY_MSG, span: 'lg:col-span-2', accent: 'bg-brand-teal/10' },
+    ];
+    document.getElementById('services-grid').innerHTML = SERVICES.map(
+      (s) => `
+      <article data-testid="service-card-${s.id}" class="reveal group flex h-full flex-col rounded-[1.75rem] border border-brand-borderWarm bg-white p-7 shadow-[0_8px_24px_rgba(30,41,43,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-orange/40 hover:shadow-[0_22px_48px_rgba(30,41,43,0.12)] ${s.span}">
+        <div class="mb-5 grid h-14 w-14 place-items-center rounded-2xl text-2xl ${s.accent} transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">${s.icon}</div>
+        <h3 class="font-display text-xl font-bold">${s.title}</h3>
+        <p class="mt-2.5 flex-1 text-sm leading-relaxed text-brand-muted">${s.desc}</p>
+        <a data-testid="service-card-${s.id}-cta" href="${waLink(s.msg)}" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-brand-orange hover:text-brand-orangeDark transition-colors">Agendar pelo WhatsApp ↗</a>
+      </article>`
+    ).join('');
+
+    // Agendamento rápido
+    const state = { pet: 'Cão', service: 'Consulta', period: 'Manhã' };
+    const groups = [
+      { key: 'pet', el: 'pet-group', options: ['Cão', 'Gato', 'Outro'], tid: 'quick-booking-pet' },
+      { key: 'service', el: 'service-group', options: ['Consulta', 'Vacinação', 'Exames', 'Cirurgia', 'Urgência'], tid: 'quick-booking-service' },
+      { key: 'period', el: 'period-group', options: ['Manhã', 'Tarde'], tid: 'quick-booking-period' },
+    ];
+    const slug = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+    function buildMessage() {
+      const petPhrase = state.pet === 'Outro' ? 'meu pet' : `meu ${state.pet.toLowerCase()}`;
+      return `Olá! Vim pelo site da Late e Mia. Gostaria de agendar ${state.service.toLowerCase()} para ${petPhrase}, de preferência no período da ${state.period.toLowerCase()}. Podem me passar os horários disponíveis?`;
+    }
+    function renderGroups() {
+      groups.forEach((g) => {
+        document.getElementById(g.el).innerHTML = g.options
+          .map((o) => `<button type="button" data-testid="${g.tid}-${slug(o)}" class="pill ${state[g.key] === o ? 'active' : ''}" data-group="${g.key}" data-value="${o}">${o}</button>`)
+          .join('');
+      });
+      document.querySelectorAll('.pill').forEach((b) =>
+        b.addEventListener('click', () => {
+          state[b.dataset.group] = b.dataset.value;
+          renderGroups();
+        })
+      );
+      const msg = buildMessage();
+      document.getElementById('booking-preview').textContent = `“${msg}”`;
+      document.getElementById('booking-submit').href = waLink(msg);
+    }
+    renderGroups();
+
+    // Copiar endereço
+    document.getElementById('copy-address').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('R. Marabá, 383 - Jardim America I, Várzea Paulista - SP, 13221-330');
+        document.getElementById('copy-label').textContent = 'Copiado!';
+        setTimeout(() => (document.getElementById('copy-label').textContent = 'Copiar endereço'), 2000);
+      } catch (e) {}
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.12 }
+    );
